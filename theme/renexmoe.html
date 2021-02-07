@@ -242,11 +242,7 @@
   </form>
 </div>
 <!--EncryptedEnd-->
-<!--ShowThumbnailsStart-->
-                            &nbsp;&nbsp;&nbsp;
-                            <label><input type="checkbox" id="originalpic"><!--constStr@OriginalPic--></label>
-                            <button onclick="showthumbnails(this);"><!--constStr@ShowThumbnails--></button>
-<!--ShowThumbnailsEnd-->
+
   <!--IsFolderStart-->
 <!--HeadomfStart-->
 <div class="mdui-typo mdui-shadow-3" style="padding: 20px; margin: 20px 0">
@@ -356,7 +352,7 @@
         href="<!--FileEncodeReplaceUrl-->?preview"
         aria-label="File"
       >
-        <i class="mdui-icon material-icons"> <!--IconValue--></i>
+        <i name="filelist" class="mdui-icon material-icons"> <!--IconValue--></i>
         <span> <!--FileEncodeReplaceName--></span>
       </a>
     </div>
@@ -409,55 +405,76 @@
   <!--IsimgFileStart-->
 <img class="mdui-img-fluid mdui-center mdui-m-t-5" src="<!--FileDownUrl-->" />
 <!--IsimgFileEnd-->
+
  <!--IsmusicFileStart-->
-<audio
-  class="mdui-center"
-  src="<!--FileDownUrl-->"
-  controls
-  autoplay
-  style="width: 100%; margin-top: 10%; margin-bottom: 10%"
->
-  >
-</audio>
+  <div id="aplayer"></div>
 <!--IsmusicFileEnd-->
 
-  <!--IsvideoFileStart-->
-<script type="text/javascript">
-<!--ShowThumbnailsStart-->
-    function showthumbnails(obj) {
-        images = [<!--ImgExts-->];
-        var files=document.getElementsByName('filelist');
-        for ($i=0;$i<files.length;$i++) {
-            str=files[$i].innerText;
-            if (str.substr(-1)==' ') str=str.substr(0,str.length-1);
-            if (!str) continue;
-            strarry=str.split('.');
-            ext=strarry[strarry.length-1].toLowerCase();
-            if (images.indexOf(ext)>-1) {
-                var url=files[$i].href;
-                url=url.substr(0,url.length-8);
-                if (document.getElementById('originalpic').checked==true) {
-                    files[$i].parentNode.parentNode.innerHTML='<td colspan="3"><img src="'+url+'" alt="'+str+'" onload="if (this.offsetWidth>document.getElementById(\'list-div\').offsetWidth) this.style.width=\'100%\';"></td>';
-                    $i--;
-                } else {
-                    url+='?thumbnails';
-                    get_thumbnails_url(url, str, files[$i]);
-                }
-            }
-        }
-        obj.disabled='disabled';
-    }
-    function get_thumbnails_url(url, name, filea) {
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", url, true);
-        xhr.send('');
-        xhr.onload = function(e){
-            if (xhr.status==200) {
-                if (xhr.responseText!='') filea.innerHTML='<img src="'+xhr.responseText+'" alt="'+name+'">';
-            } else console.log(xhr.status+'\n'+xhr.responseText);
-        }
-    }
-<!--ShowThumbnailsEnd-->
+<!--IsvideoFileStart-->
+<div id="video-a0"></div>
+<!--IsvideoFileEnd-->
+ <!--IsofficeFileStart-->
+<iframe
+  id="office-a"
+  src="https://view.officeapps.live.com/op/view.aspx?src=<!--FileEncodeDownUrl-->"
+  style="width: 100%; height: 800px"
+  frameborder="0"
+></iframe>
+<!--IsofficeFileEnd-->
+
+  <!--IspdfFileStart-->
+ <iframe>
+ 	<div id="pdf-d">Loading PDF</div>
+ </iframe>
+<!--IspdfFileEnd-->
+ <!--IstxtFileStart-->
+<pre
+  id="editor"
+  style="
+    white-space: pre-wrap;
+    font-family: JetBrains Mono, Fira Code, Sarasa Mono SC, Cascadia Code, Menlo,
+      Consolas, monaco, Noto Sans SC;
+  "
+><code id="code"><!--TxtContent--></code></pre>
+<script>
+  document.querySelector("#admin-menu").innerHTML +=
+    '<li class="mdui-menu-item"><a href="javascript:void(0);"class="mdui-ripple highlight"><i class="mdui-menu-item-icon mdui-icon material-icons">style</i>markdown解析</a></li>';
+  document.querySelector(
+    ".mdui-toolbar"
+  ).innerHTML += `<a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-sm-up highlight"><i class="mdui-icon material-icons">style</i></a>`;
+</script>
+
+<!--IstxtFileEnd-->
+
+  <!--IsOtherFileStart-->
+  <!--constStr@FileNotSupport-->
+  <!--IsOtherFileEnd-->
+</div>
+<a
+  href="<!--FileEncodeReplaceUrl-->"
+  target="_blank"
+  class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent"
+  ><i class="mdui-icon material-icons">file_download</i></a
+>
+<script>
+  document.querySelector("#admin-menu").innerHTML +=
+    '<li class="mdui-menu-item"><a href="javascript:void(0);"class="mdui-ripple downloadurl"><i class="mdui-menu-item-icon mdui-icon material-icons">cloud_download</i>下载链接</a></li>';
+  document.querySelector(
+    ".mdui-toolbar"
+  ).innerHTML += `<a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-sm-up downloadurl"><i class="mdui-icon material-icons">cloud_download</i></a>`;
+</script>
+<!--IsFileEnd-->
+
+</div>
+
+  </body>
+  <!--IconValuesStart-->
+  { "music":"audiotrack", "video":"ondemand_video", "img":"image",
+  "pdf":"picture_as_pdf", "default":"insert_drive_file"}
+  <!--IconValuesEnd-->
+  <script src="https://cdn.jsdelivr.net/gh/newcdn/ui/js/dianjiyuanquan.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~1b381f3c.5004ff1e7fccf38af990.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~28a13772.d11317064b292bf02fea.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~34e3d95a.1bd1a5e8637cbfb8c667.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~5d2cf59e.f43e55be3ceb6bd06cc7.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~798ab416.8cdd2e29b70683103071.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~7c420fd4.7520935b3261cc2558df.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~df18e074.72b37a5a3dc42ae7080e.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~f0256996.b71376c975fe3aff5b8b.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~f1cc13fd.7155493f51961fa66d7e.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/webpack-runtime.a94291540399944c9e47.js"></script><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+
+  <script type="text/javascript">
 <!--IsvideoFileStart-->
     function loadResources(type, src, callback) {
         let script = document.createElement(type);
@@ -526,65 +543,59 @@
     }
     addVideos(['<!--FileDownUrl-->']);
 <!--IsvideoFileEnd-->
-</script>
-<div id="video-a0"></div>
-<!--IsvideoFileEnd-->
- <!--IsofficeFileStart-->
-<iframe
-  id="office-a"
-  src="https://view.officeapps.live.com/op/view.aspx?src=<!--FileEncodeDownUrl-->"
-  style="width: 100%; height: 800px"
-  frameborder="0"
-></iframe>
-<!--IsofficeFileEnd-->
-
-  <!--IspdfFileStart-->
-<embed src="<!--FileEncodeReplaceUrl-->" type="application/pdf">
+<!--IsmusicFileStart-->
+const ap = new APlayer({
+    container: document.getElementById('aplayer'),
+    autoplay: true,
+    theme: '#FADFA3',
+    loop: 'all',
+    order: 'random',
+    preload: 'auto',
+    volume: 0.7,
+    mutex: true,
+    audio: [
+        {
+            name: '<!--FileName-->',
+            url: '<!--FileEncodeDownUrl-->',
+        },
+    ]
+});
+<!--IsmusicFileEnd-->
+<!--IspdfFileStart-->
+    pdfjsLib.GlobalWorkerOptions.workerSrc = '//cdn.bootcss.com/pdf.js/2.3.200/pdf.worker.min.js';
+    var loadingTask = pdfjsLib.getDocument({
+        url: '<!--FileDownUrl-->',
+        cMapUrl: "//cdn.jsdelivr.net/npm/pdfjs-dist@2.2.228/cmaps/",
+        cMapPacked: true,
+        rangeChunkSize: 65535
+    });
+    loadingTask.promise.then(function(pdf) {
+        var pagenum =  pdf.numPages;
+        var pdfContainer = document.getElementById('pdf-d');
+        pdfContainer.innerHTML = '';
+        for (var i=1;i<=pagenum;i++) {
+            var canvasNew = document.createElement('canvas');
+            canvasNew.id = 'pdf-c'+i;
+            pdfContainer.appendChild(canvasNew);
+            renderpage(pdf,i);
+        }
+    });
+    function renderpage(pdf,i)
+    {
+        pdf.getPage(i).then(function(page) { 
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+            var canvas = document.getElementById('pdf-c'+i);
+            var context = canvas.getContext("2d");
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            var renderContext = {
+                canvasContext: context,
+                viewport: viewport,
+            };
+            page.render(renderContext);
+        });
+    }
 <!--IspdfFileEnd-->
- <!--IstxtFileStart-->
-<pre
-  id="editor"
-  style="
-    white-space: pre-wrap;
-    font-family: JetBrains Mono, Fira Code, Sarasa Mono SC, Cascadia Code, Menlo,
-      Consolas, monaco, Noto Sans SC;
-  "
-><code id="code"><!--TxtContent--></code></pre>
-<script>
-  document.querySelector("#admin-menu").innerHTML +=
-    '<li class="mdui-menu-item"><a href="javascript:void(0);"class="mdui-ripple highlight"><i class="mdui-menu-item-icon mdui-icon material-icons">style</i>markdown解析</a></li>';
-  document.querySelector(
-    ".mdui-toolbar"
-  ).innerHTML += `<a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-sm-up highlight"><i class="mdui-icon material-icons">style</i></a>`;
 </script>
-
-<!--IstxtFileEnd-->
-
-  <!--IsOtherFileStart-->
-  <!--constStr@FileNotSupport-->
-  <!--IsOtherFileEnd-->
-</div>
-<a
-  href="<!--FileEncodeReplaceUrl-->"
-  target="_blank"
-  class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent"
-  ><i class="mdui-icon material-icons">file_download</i></a
->
-<script>
-  document.querySelector("#admin-menu").innerHTML +=
-    '<li class="mdui-menu-item"><a href="javascript:void(0);"class="mdui-ripple downloadurl"><i class="mdui-menu-item-icon mdui-icon material-icons">cloud_download</i>下载链接</a></li>';
-  document.querySelector(
-    ".mdui-toolbar"
-  ).innerHTML += `<a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-sm-up downloadurl"><i class="mdui-icon material-icons">cloud_download</i></a>`;
-</script>
-<!--IsFileEnd-->
-
-</div>
-
-  </body>
-  <!--IconValuesStart-->
-  { "music":"audiotrack", "video":"ondemand_video", "img":"image",
-  "pdf":"picture_as_pdf", "default":"insert_drive_file"}
-  <!--IconValuesEnd-->
-  <script src="https://cdn.jsdelivr.net/gh/newcdn/ui/js/dianjiyuanquan.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~1b381f3c.5004ff1e7fccf38af990.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~28a13772.d11317064b292bf02fea.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~34e3d95a.1bd1a5e8637cbfb8c667.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~5d2cf59e.f43e55be3ceb6bd06cc7.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~798ab416.8cdd2e29b70683103071.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~7c420fd4.7520935b3261cc2558df.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~df18e074.72b37a5a3dc42ae7080e.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~f0256996.b71376c975fe3aff5b8b.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~f1cc13fd.7155493f51961fa66d7e.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/webpack-runtime.a94291540399944c9e47.js"></script>
 </html>
