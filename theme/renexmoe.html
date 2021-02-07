@@ -414,71 +414,8 @@
 <!--IsmusicFileEnd-->
 
 <!--IsvideoFileStart-->
-<div id="video-a0"></div>
-<!--IsvideoFileEnd-->
- <!--IsofficeFileStart-->
-<iframe
-  id="office-a"
-  src="https://view.officeapps.live.com/op/view.aspx?src=<!--FileEncodeDownUrl-->"
-  style="width: 100%; height: 800px"
-  frameborder="0"
-></iframe>
-<!--IsofficeFileEnd-->
-
-  <!--IspdfFileStart-->
- <iframe>
- 	<div id="pdf-d">Loading PDF</div>
- </iframe>
-<!--IspdfFileEnd-->
- <!--IstxtFileStart-->
-<pre
-  id="editor"
-  style="
-    white-space: pre-wrap;
-    font-family: JetBrains Mono, Fira Code, Sarasa Mono SC, Cascadia Code, Menlo,
-      Consolas, monaco, Noto Sans SC;
-  "
-><code id="code"><!--TxtContent--></code></pre>
-<script>
-  document.querySelector("#admin-menu").innerHTML +=
-    '<li class="mdui-menu-item"><a href="javascript:void(0);"class="mdui-ripple highlight"><i class="mdui-menu-item-icon mdui-icon material-icons">style</i>markdown解析</a></li>';
-  document.querySelector(
-    ".mdui-toolbar"
-  ).innerHTML += `<a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-sm-up highlight"><i class="mdui-icon material-icons">style</i></a>`;
-</script>
-
-<!--IstxtFileEnd-->
-
-  <!--IsOtherFileStart-->
-  <!--constStr@FileNotSupport-->
-  <!--IsOtherFileEnd-->
-</div>
-<a
-  href="<!--FileEncodeReplaceUrl-->"
-  target="_blank"
-  class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent"
-  ><i class="mdui-icon material-icons">file_download</i></a
->
-<script>
-  document.querySelector("#admin-menu").innerHTML +=
-    '<li class="mdui-menu-item"><a href="javascript:void(0);"class="mdui-ripple downloadurl"><i class="mdui-menu-item-icon mdui-icon material-icons">cloud_download</i>下载链接</a></li>';
-  document.querySelector(
-    ".mdui-toolbar"
-  ).innerHTML += `<a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-sm-up downloadurl"><i class="mdui-icon material-icons">cloud_download</i></a>`;
-</script>
-<!--IsFileEnd-->
-
-</div>
-
-  </body>
-  <!--IconValuesStart-->
-  { "music":"audiotrack", "video":"ondemand_video", "img":"image",
-  "pdf":"picture_as_pdf", "default":"insert_drive_file"}
-  <!--IconValuesEnd-->
-<script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~1b381f3c.5004ff1e7fccf38af990.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~28a13772.d11317064b292bf02fea.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~34e3d95a.1bd1a5e8637cbfb8c667.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~5d2cf59e.f43e55be3ceb6bd06cc7.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~798ab416.8cdd2e29b70683103071.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~7c420fd4.7520935b3261cc2558df.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~df18e074.72b37a5a3dc42ae7080e.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~f0256996.b71376c975fe3aff5b8b.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~f1cc13fd.7155493f51961fa66d7e.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/webpack-runtime.a94291540399944c9e47.js"></script><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
-
-  <script type="text/javascript">
-<!--IsvideoFileStart-->
+  <script>
+    <!--IsvideoFileStart-->
     function loadResources(type, src, callback) {
         let script = document.createElement(type);
         let loaded = false;
@@ -547,6 +484,72 @@
     }
     addVideos(['<!--FileDownUrl-->']);
 <!--IsvideoFileEnd-->
+  </script>
+<div id="video-a0"></div>
+<!--IsvideoFileEnd-->
+ <!--IsofficeFileStart-->
+<iframe
+  id="office-a"
+  src="https://view.officeapps.live.com/op/view.aspx?src=<!--FileEncodeDownUrl-->"
+  style="width: 100%; height: 800px"
+  frameborder="0"
+></iframe>
+<!--IsofficeFileEnd-->
+
+  <!--IspdfFileStart-->
+ <iframe>
+ 	<div id="pdf-d">Loading PDF</div>
+ </iframe>
+<!--IspdfFileEnd-->
+ <!--IstxtFileStart-->
+<pre
+  id="editor"
+  style="
+    white-space: pre-wrap;
+    font-family: JetBrains Mono, Fira Code, Sarasa Mono SC, Cascadia Code, Menlo,
+      Consolas, monaco, Noto Sans SC;
+  "
+><code id="code"><!--TxtContent--></code></pre>
+<script>
+  document.querySelector("#admin-menu").innerHTML +=
+    '<li class="mdui-menu-item"><a href="javascript:void(0);"class="mdui-ripple highlight"><i class="mdui-menu-item-icon mdui-icon material-icons">style</i>markdown解析</a></li>';
+  document.querySelector(
+    ".mdui-toolbar"
+  ).innerHTML += `<a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-sm-up highlight"><i class="mdui-icon material-icons">style</i></a>`;
+</script>
+
+<!--IstxtFileEnd-->
+
+  <!--IsOtherFileStart-->
+  <!--constStr@FileNotSupport-->
+  <!--IsOtherFileEnd-->
+</div>
+<a
+  href="<!--FileEncodeReplaceUrl-->"
+  target="_blank"
+  class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent"
+  ><i class="mdui-icon material-icons">file_download</i></a
+>
+<script>
+  document.querySelector("#admin-menu").innerHTML +=
+    '<li class="mdui-menu-item"><a href="javascript:void(0);"class="mdui-ripple downloadurl"><i class="mdui-menu-item-icon mdui-icon material-icons">cloud_download</i>下载链接</a></li>';
+  document.querySelector(
+    ".mdui-toolbar"
+  ).innerHTML += `<a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-sm-up downloadurl"><i class="mdui-icon material-icons">cloud_download</i></a>`;
+</script>
+<!--IsFileEnd-->
+
+</div>
+
+  </body>
+  <!--IconValuesStart-->
+  { "music":"audiotrack", "video":"ondemand_video", "img":"image",
+  "pdf":"picture_as_pdf", "default":"insert_drive_file"}
+  <!--IconValuesEnd-->
+<script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~1b381f3c.5004ff1e7fccf38af990.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~28a13772.d11317064b292bf02fea.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~34e3d95a.1bd1a5e8637cbfb8c667.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~5d2cf59e.f43e55be3ceb6bd06cc7.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~798ab416.8cdd2e29b70683103071.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~7c420fd4.7520935b3261cc2558df.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~df18e074.72b37a5a3dc42ae7080e.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~f0256996.b71376c975fe3aff5b8b.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~f1cc13fd.7155493f51961fa66d7e.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/webpack-runtime.a94291540399944c9e47.js"></script><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+
+  <script type="text/javascript">
+
 <!--IspdfFileStart-->
     pdfjsLib.GlobalWorkerOptions.workerSrc = '//cdn.bootcss.com/pdf.js/2.3.200/pdf.worker.min.js';
     var loadingTask = pdfjsLib.getDocument({
