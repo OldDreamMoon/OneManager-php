@@ -405,6 +405,7 @@
  <!--IsmusicFileStart-->
  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.0/dist/APlayer.min.css">
+  <div id="aplayer"></div>
   <script>
     const ap = new APlayer({
     container: document.getElementById('aplayer'),
@@ -413,13 +414,12 @@
     volume: 0.7,
     audio: [
         {
-            name: '<!--FileName-->',
+            name: '1',
             url: '<!--FileDownUrl-->',
         },
     ]
 });
   </script>
-  <div id="aplayer"></div>
 <!--IsmusicFileEnd-->
 
 <!--IsvideoFileStart-->
