@@ -403,14 +403,23 @@
 <!--IsimgFileEnd-->
 
  <!--IsmusicFileStart-->
-  <audio
-  class="mdui-center"
-  src="<!--FileDownUrl-->"
-  controls
-  autoplay
-  style="width: 100%; margin-top: 10%; margin-bottom: 10%"
->
-</audio>
+ <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.0/dist/APlayer.min.css">
+  <script>
+    const ap = new APlayer({
+    container: document.getElementById('aplayer'),
+    autoplay: true,
+    theme: '#FADFA3',
+    volume: 0.7,
+    audio: [
+        {
+            name: '<!--FileName-->',
+            url: '<!--FileDownUrl-->',
+        },
+    ]
+});
+  </script>
+  <div id="aplayer"></div>
 <!--IsmusicFileEnd-->
 
 <!--IsvideoFileStart-->
@@ -498,7 +507,45 @@
 
   <!--IspdfFileStart-->
  <iframe>
- 	<div id="pdf-d">Loading PDF</div>
+  <script type="text/javascript">
+<!--IspdfFileStart-->
+    pdfjsLib.GlobalWorkerOptions.workerSrc = '//cdn.bootcss.com/pdf.js/2.3.200/pdf.worker.min.js';
+    var loadingTask = pdfjsLib.getDocument({
+        url: '<!--FileDownUrl-->',
+        cMapUrl: "//cdn.jsdelivr.net/npm/pdfjs-dist@2.2.228/cmaps/",
+        cMapPacked: true,
+        rangeChunkSize: 65535
+    });
+    loadingTask.promise.then(function(pdf) {
+        var pagenum =  pdf.numPages;
+        var pdfContainer = document.getElementById('pdf-d');
+        pdfContainer.innerHTML = '';
+        for (var i=1;i<=pagenum;i++) {
+            var canvasNew = document.createElement('canvas');
+            canvasNew.id = 'pdf-c'+i;
+            pdfContainer.appendChild(canvasNew);
+            renderpage(pdf,i);
+        }
+    });
+    function renderpage(pdf,i)
+    {
+        pdf.getPage(i).then(function(page) { 
+            var scale = 1.5;
+            var viewport = page.getViewport({ scale: scale, });
+            var canvas = document.getElementById('pdf-c'+i);
+            var context = canvas.getContext("2d");
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            var renderContext = {
+                canvasContext: context,
+                viewport: viewport,
+            };
+            page.render(renderContext);
+        });
+    }
+<!--IspdfFileEnd-->
+</script>
+  <div id="pdf-d">Loading PDF</div>
  </iframe>
 <!--IspdfFileEnd-->
  <!--IstxtFileStart-->
@@ -546,45 +593,5 @@
   { "music":"audiotrack", "video":"ondemand_video", "img":"image",
   "pdf":"picture_as_pdf", "default":"insert_drive_file"}
   <!--IconValuesEnd-->
-<script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~1b381f3c.5004ff1e7fccf38af990.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~28a13772.d11317064b292bf02fea.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~34e3d95a.1bd1a5e8637cbfb8c667.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~5d2cf59e.f43e55be3ceb6bd06cc7.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~798ab416.8cdd2e29b70683103071.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~7c420fd4.7520935b3261cc2558df.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~df18e074.72b37a5a3dc42ae7080e.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~f0256996.b71376c975fe3aff5b8b.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~f1cc13fd.7155493f51961fa66d7e.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/webpack-runtime.a94291540399944c9e47.js"></script><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
-
-  <script type="text/javascript">
-
-<!--IspdfFileStart-->
-    pdfjsLib.GlobalWorkerOptions.workerSrc = '//cdn.bootcss.com/pdf.js/2.3.200/pdf.worker.min.js';
-    var loadingTask = pdfjsLib.getDocument({
-        url: '<!--FileDownUrl-->',
-        cMapUrl: "//cdn.jsdelivr.net/npm/pdfjs-dist@2.2.228/cmaps/",
-        cMapPacked: true,
-        rangeChunkSize: 65535
-    });
-    loadingTask.promise.then(function(pdf) {
-        var pagenum =  pdf.numPages;
-        var pdfContainer = document.getElementById('pdf-d');
-        pdfContainer.innerHTML = '';
-        for (var i=1;i<=pagenum;i++) {
-            var canvasNew = document.createElement('canvas');
-            canvasNew.id = 'pdf-c'+i;
-            pdfContainer.appendChild(canvasNew);
-            renderpage(pdf,i);
-        }
-    });
-    function renderpage(pdf,i)
-    {
-        pdf.getPage(i).then(function(page) { 
-            var scale = 1.5;
-            var viewport = page.getViewport({ scale: scale, });
-            var canvas = document.getElementById('pdf-c'+i);
-            var context = canvas.getContext("2d");
-            canvas.height = viewport.height;
-            canvas.width = viewport.width;
-            var renderContext = {
-                canvasContext: context,
-                viewport: viewport,
-            };
-            page.render(renderContext);
-        });
-    }
-<!--IspdfFileEnd-->
-</script>
+<script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~1b381f3c.5004ff1e7fccf38af990.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~28a13772.d11317064b292bf02fea.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~34e3d95a.1bd1a5e8637cbfb8c667.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~5d2cf59e.f43e55be3ceb6bd06cc7.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~798ab416.8cdd2e29b70683103071.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~7c420fd4.7520935b3261cc2558df.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~df18e074.72b37a5a3dc42ae7080e.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~f0256996.b71376c975fe3aff5b8b.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/app~f1cc13fd.7155493f51961fa66d7e.js"></script><script src="https://cdn.jsdelivr.net/gh/186526/renexmoe-cdn@v1.1.5/js/webpack-runtime.a94291540399944c9e47.js"></script>
 </html>
