@@ -403,23 +403,14 @@
 <!--IsimgFileEnd-->
 
  <!--IsmusicFileStart-->
- <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.0/dist/APlayer.min.css">
-  <div id="aplayer"></div>
-  <script>
-    const ap = new APlayer({
-    container: document.getElementById('aplayer'),
-    autoplay: true,
-    theme: '#FADFA3',
-    volume: 0.7,
-    audio: [
-        {
-            name: '1',
-            url: '<!--FileDownUrl-->',
-        },
-    ]
-});
-  </script>
+  <audio
+  class="mdui-center"
+  src="<!--FileDownUrl-->"
+  controls
+  autoplay
+  style="width: 100%; margin-top: 10%; margin-bottom: 10%"
+>
+</audio>
 <!--IsmusicFileEnd-->
 
 <!--IsvideoFileStart-->
@@ -508,7 +499,6 @@
   <!--IspdfFileStart-->
  <iframe>
   <script type="text/javascript">
-<!--IspdfFileStart-->
     pdfjsLib.GlobalWorkerOptions.workerSrc = '//cdn.bootcss.com/pdf.js/2.3.200/pdf.worker.min.js';
     var loadingTask = pdfjsLib.getDocument({
         url: '<!--FileDownUrl-->',
@@ -543,7 +533,6 @@
             page.render(renderContext);
         });
     }
-<!--IspdfFileEnd-->
 </script>
   <div id="pdf-d">Loading PDF</div>
  </iframe>
