@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" />
 <link rel="preconnect" href="https://renexmoe.vercel.app" />
 <meta charset="utf-8" />
-<link rel="icon" href="https://s3.ax1x.com/2021/02/07/yNQB60.png" type="image/png">
+<link rel="icon" href="https://raw.githubusercontent.com/OldDreamMoon/OneManager-php/master/theme/favicon.ico" type="image/x-icon">
 <meta
   name="viewport"
   content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"
@@ -498,43 +498,7 @@
 
   <!--IspdfFileStart-->
  <iframe>
-  <script type="text/javascript">
-    pdfjsLib.GlobalWorkerOptions.workerSrc = '//cdn.bootcss.com/pdf.js/2.3.200/pdf.worker.min.js';
-    var loadingTask = pdfjsLib.getDocument({
-        url: '<!--FileDownUrl-->',
-        cMapUrl: "//cdn.jsdelivr.net/npm/pdfjs-dist@2.2.228/cmaps/",
-        cMapPacked: true,
-        rangeChunkSize: 65535
-    });
-    loadingTask.promise.then(function(pdf) {
-        var pagenum =  pdf.numPages;
-        var pdfContainer = document.getElementById('pdf-d');
-        pdfContainer.innerHTML = '';
-        for (var i=1;i<=pagenum;i++) {
-            var canvasNew = document.createElement('canvas');
-            canvasNew.id = 'pdf-c'+i;
-            pdfContainer.appendChild(canvasNew);
-            renderpage(pdf,i);
-        }
-    });
-    function renderpage(pdf,i)
-    {
-        pdf.getPage(i).then(function(page) { 
-            var scale = 1.5;
-            var viewport = page.getViewport({ scale: scale, });
-            var canvas = document.getElementById('pdf-c'+i);
-            var context = canvas.getContext("2d");
-            canvas.height = viewport.height;
-            canvas.width = viewport.width;
-            var renderContext = {
-                canvasContext: context,
-                viewport: viewport,
-            };
-            page.render(renderContext);
-        });
-    }
-</script>
-  <div id="pdf-d">Loading PDF</div>
+  <embed src="<!--FileEncodeReplaceUrl-->" type="application/pdf">
  </iframe>
 <!--IspdfFileEnd-->
  <!--IstxtFileStart-->
