@@ -534,6 +534,7 @@
                 container: document.getElementById('video-a' + i),
                 screenshot: true,
                 autoplay: true,
+                preload: 'auto',
                 playbackSpeed: [0.5,0.75,1,1.25,1.5,2],
                 video: {
                     url: videos[i]
@@ -548,15 +549,12 @@ const ap = new APlayer({
     container: document.getElementById('aplayer'),
     autoplay: true,
     theme: '#FADFA3',
-    loop: 'all',
-    order: 'random',
     preload: 'auto',
     volume: 0.7,
-    mutex: true,
     audio: [
         {
             name: '<!--FileName-->',
-            url: '<!--FileEncodeDownUrl-->',
+            url: '<!--FileDownUrl-->',
         },
     ]
 });
